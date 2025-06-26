@@ -18,8 +18,8 @@ CreateDatabase:Name=IRISAPP_CODE,Directory=/persistent/IRIS/mgr/IRISAPP_CODE,Res
 CreateNamespace:Name=IRISAPP,Globals=IRISAPP_DATA,Routines=IRISAPP_CODE,Interop=1
 
 
-CreateResource:Name=%DB_BOWMEDICAL_CODE,Description="BOWMEDICAL_CODE database"
-CreateDatabase:Name=BOWMEDICAL_CODE,Directory=/persistent/IRIS/mgr/BOWMEDICAL_CODE,Resource=%DB_BOWMEDICAL_CODE
+CreateResource:Name=%DB_COMMON_CODE,Description="COMMON_CODE database"
+CreateDatabase:Name=COMMON_CODE,Directory=/persistent/IRIS/mgr/COMMON_CODE,Resource=%DB_COMMON_CODE
 
 
 ModifyService:Name=%Service_CallIn,Enabled=1,AutheEnabled=48

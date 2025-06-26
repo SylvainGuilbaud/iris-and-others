@@ -10,7 +10,7 @@
 
     zn "%SYS"
 
-    set db = ##class(SYS.Database).%OpenId("/usr/irissys/mgr/BOWMEDICAL_CODE")
+    set db = ##class(SYS.Database).%OpenId("/usr/irissys/mgr/COMMON_CODE")
     Set db.ReadOnly = 1
     do db.%Save()
 
