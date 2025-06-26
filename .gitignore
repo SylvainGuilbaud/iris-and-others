@@ -1,0 +1,20 @@
+.DS_Store
+**/.DS_Store
+**/*.log
+**/*.tar
+**/*.gz
+**/IRIS.DAT
+**/iris.lck
+
+__pycache__
+
+iris-main.log
+.venv
+.venv-iris
+waitISC.log
+
+# notetbook ignore
+.ipynb_checkpoints
+
+/volumes
+/persistent

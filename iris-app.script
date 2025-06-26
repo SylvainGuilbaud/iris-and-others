@@ -1,0 +1,17 @@
+    
+    zn "IRISAPP"
+
+    set sc = $SYSTEM.OBJ.LoadDir("/home/irisowner/dev/src/objectscript","ck",,1)
+
+    do ##class(Ens.Util.Statistics).EnableSAMForNamespace()
+    do ##class(Ens.Util.Statistics).EnableStatsForProduction()
+    
+    Set ^Ens.Debug("UtilEnsMessages","sql")=1
+
+    zn "%SYS"
+
+    set db = ##class(SYS.Database).%OpenId("/usr/irissys/mgr/BOWMEDICAL_CODE")
+    Set db.ReadOnly = 1
+    do db.%Save()
+
+    halt

@@ -1,0 +1,54 @@
+stages:          
+  - test
+  - deploy_DEV
+
+variables:
+  # define the image to use
+  IMAGE: intersystemsdc/irishealth-community:latest
+  IRISNAMESPACE_EAI: "LORAH"
+  IRISNAMESPACE_FHIR: "FHIRSERVER"
+  DOCKER_INSTANCE: "lorah"
+  HOST_INTERGRATION: "lorah-integ"
+  USER_INTERGRATION: "root"
+
+
+test:
+  # use an docker executor
+  stage: test
+  image: intersystemsdc/irishealth-community:latest
+  before_script:
+    - iris start IRIS
+    - iris merge IRIS merge.cpf # change by iris.test.script
+    - export IRISNAMESPACE=USER
+  script:
+    - pip install -r requirements.txt
+    - pip install python_fhir_converter-0.4.5-py3-none-any.whl
+    - pytest
+
+
+deploy-Development:
+  image: alpine:latest
+  stage: deploy_DEV
+  environment:
+    name: DEV
+    url: http://$SERVER_IP_DEV
+  script:
+  - chmod og= $ID_RSA_DEV
+  - apk update && apk add openssh-client
+  - ssh -i $ID_RSA_DEV -o StrictHostKeyChecking=no $SERVER_USER_DEV@$SERVER_IP_DEV "ls"
+  - scp -i $ID_RSA_DEV -r ./src/* $SERVER_USER_DEV@$SERVER_IP_DEV:/home/$SERVER_USER_DEV/git/lorah/src
+  - ssh -i $ID_RSA_DEV -o StrictHostKeyChecking=no $SERVER_USER_DEV@$SERVER_IP_DEV "cd /home/$SERVER_USER_DEV/git/lorah && 
+      docker compose exec $DOCKER_INSTANCE bash -c '
+        export IRISNAMESPACE=LORAH &&
+        iop --init &&
+        iop --migrate /irisdev/app/src/python/fhir-converter/settings.py &&
+        iop --restart &&
+        export IRISNAMESPACE=FHIRSERVER &&
+        iop --init &&
+        iop --migrate /irisdev/app/src/python/fhirserver/settings.py &&
+        iop --restart 
+        '"
+
+  # only:
+  #   - main
+

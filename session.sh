@@ -1,0 +1,1 @@
+docker exec -ti $1 iris session iris -U $1 
