@@ -21,64 +21,6 @@
 
     zpm "install pex-embbeded-python"
     set status = ##class(utils.migration).setup("/home/irisowner/dev/src")
-    
-    #; zn "%sys"
-    #; set appName="/lorah/app"
-    #; set crud("NameSpace") = "LORAH"
-    #; set crud("DispatchClass") = "LORAH.REST"
-    #; set crud("CookiePath") = appName
-    #; set crud("Description") = "LORAH REST API"
-    #; set crud("MatchRoles") = ":%All"
-    #; set crud("AutheEnabled") = 96
-    #; set crud("IsNameSpaceDefault") = 0
-    #; set sc = ##class(Security.Applications).Create(appName, .crud)
-    #; set step="Install " _  appName
-    #; if 'sc { set ^["USER"]TRACE($zdt($now(),3,,6),step)=$lb($system.Status.GetErrorCodes(sc),$system.Status.GetErrorText(sc))} else { set ^["USER"]TRACE($zdt($now(),3,,6),step)="successful"}
-
-    #; set namespace = "LORAH"
-    #; set dbname = namespace_"X0001R"
-    #; set step="DismountDatabase " _  dbname
-    #; set ^["USER"]TRACE($zdt($now(),3,,6),step)="dismounting " _ dbname
-    #; set sc =  ##class(SYS.Database).DismountDatabase("/usr/irissys/mgr/" _ dbname)
-    #; set step="DismountDatabase " _  dbname
-    #; if 'sc { set ^["USER"]TRACE($zdt($now(),3,,6),step)=$lb($system.Status.GetErrorCodes(sc),$system.Status.GetErrorText(sc))} else { set ^["USER"]TRACE($zdt($now(),3,,6),step)="successful"}
-
-    #; set step="EncryptDatabase " _  dbname
-    #; set ^["USER"]TRACE($zdt($now(),3,,6),step)="encrypting " _ dbname
-    #; set sc =  ##class(SYS.Database).EncryptDatabase("/usr/irissys/mgr/" _ dbname)
-    #; if 'sc { set ^["USER"]TRACE($zdt($now(),3,,6),step)=$lb($system.Status.GetErrorCodes(sc),$system.Status.GetErrorText(sc))} else { set ^["USER"]TRACE($zdt($now(),3,,6),step)="successful"}
-
-    #; set step="MountDatabase " _  dbname
-    #; set ^["USER"]TRACE($zdt($now(),3,,6),step)="mounting " _ dbname
-    #; set sc =  ##class(SYS.Database).MountDatabase("/usr/irissys/mgr/" _ dbname)
-    #; if 'sc { set ^["USER"]TRACE($zdt($now(),3,,6),step)=$lb($system.Status.GetErrorCodes(sc),$system.Status.GetErrorText(sc))} else { set ^["USER"]TRACE($zdt($now(),3,,6),step)="successful"}
-
-    #; set dbname = namespace_"X0001V" 
-    #; set step="DismountDatabase " _  dbname
-    #; set ^["USER"]TRACE($zdt($now(),3,,6),step)="dismounting " _ dbname
-    #; set sc =  ##class(SYS.Database).DismountDatabase("/usr/irissys/mgr/" _ dbname)
-    #; set step="DismountDatabase " _  dbname
-    #; if 'sc { set ^["USER"]TRACE($zdt($now(),3,,6),step)=$lb($system.Status.GetErrorCodes(sc),$system.Status.GetErrorText(sc))} else { set ^["USER"]TRACE($zdt($now(),3,,6),step)="successful"}
-
-    #; set step="EncryptDatabase " _  dbname
-    #; set ^["USER"]TRACE($zdt($now(),3,,6),step)="encrypting " _ dbname
-    #; set sc =  ##class(SYS.Database).EncryptDatabase("/usr/irissys/mgr/" _ dbname)
-    #; if 'sc { set ^["USER"]TRACE($zdt($now(),3,,6),step)=$lb($system.Status.GetErrorCodes(sc),$system.Status.GetErrorText(sc))} else { set ^["USER"]TRACE($zdt($now(),3,,6),step)="successful"}
-
-    #; set step="MountDatabase " _  dbname
-    #; set ^["USER"]TRACE($zdt($now(),3,,6),step)="mounting " _ dbname
-    #; set sc =  ##class(SYS.Database).MountDatabase("/usr/irissys/mgr/" _ dbname)
-    #; if 'sc { set ^["USER"]TRACE($zdt($now(),3,,6),step)=$lb($system.Status.GetErrorCodes(sc),$system.Status.GetErrorText(sc))} else { set ^["USER"]TRACE($zdt($now(),3,,6),step)="successful"}
- 
-    #; zn "HSLIB"
-    #; // Enable FHIR SQL Builder
-    #; Do ##class(HS.HC.FHIRSQL.Utils.Setup).CreateWebApps("HSSYS",1)
-	#; Do ##class(HS.HC.FHIRSQL.Utils.Setup).DefineDocDBs("HSSYS")
-
-    #; set ^["USER"]TRACE($zdt($now(),3,,6),"BUILD END")="LORAH"
-    #; set ^["USER"]TRACE("BUILD DURATION")=##class(common.utils).hms($num($zh-^["USER"]TRACE("BUILD START"),0))
-    #; set ^["USER"]VERSION = $zdt($now(),3,,6)
-
 
     zn "%SYS"
 

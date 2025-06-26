@@ -3,7 +3,7 @@ FROM $IMAGE
 
 USER root
 
-COPY webgateway/cert /opt/cert 
+COPY cert /opt/cert 
 
 RUN apt-get update && apt-get install -y \
     # openjdk-21-jdk \
@@ -29,7 +29,7 @@ ENV IRISNAMESPACE=USER
 # ENV PATH="/home/irisowner/iris_env/bin:/home/irisowner/.local/bin:/usr/irissys/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/home/irisowner/bin:${JAVA_HOME}/bin:${PATH}"
 ENV PATH="/home/irisowner/iris_env/bin:/home/irisowner/.local/bin:/usr/irissys/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/home/irisowner/bin"
 
-COPY key/iris.key /usr/irissys/mgr/iris.key
+COPY keys/iris.key /usr/irissys/mgr/iris.key
 
 RUN --mount=type=bind,src=.,dst=. \
     # export JAVA_HOME && \ 

@@ -6,44 +6,59 @@ services:
         - IMAGE=${IMAGE_IRIS_EM}
       dockerfile: Dockerfile
     restart: always
-    container_name: ${CONTAINERNAME_PREFIX}-iris
-    hostname: ${CONTAINERNAME_PREFIX}-iris
+    container_name: ${CONTAINER_NAME}-iris
+    hostname: ${CONTAINER_NAME}-iris
     environment:
-      - ISC_CPF_MERGE_FILE=/irisdev/app/merge.cpf
-      - ISC_DATA_DIRECTORY=/persistent/IRIS
+      - ISC_CPF_MERGE_FILE=/code/merge/merge.cpf
+      - ISC_DATA_DIRECTORY=/volumes/IRIS
       - TZ=Europe/Paris
     ports: 
       - ${IRIS_SUPERSERVER_PORT}:1972
     volumes:
       - .:/irisdev/app
-      - ./persistent:/persistent
+      - ./volumes:/volumes
       - ./data:/data
       - ./code:/code
-      - ./key:/key
+      - ./keys:/key
       - ./jdbc:/jdbc
       # - /etc/timezone:/etc/timezone:ro
       # - /etc/localtime:/etc/localtime:ro
     # command: --key /irisdev/app/key/iris.key -a /irisdev/app/configure.sh
-    command: --key /irisdev/app/key/iris.key 
+    command: --key /keys/iris.key 
 
 
   webgateway:
-    image: ${WEBGATEWAY}
+    image: ${WEBGATEWAY_APACHE}
     init: true
-    container_name: ${CONTAINERNAME_PREFIX}-webgateway
-    hostname: ${CONTAINERNAME_PREFIX}-webgateway
+    container_name: ${CONTAINER_NAME}-webgateway-apache
+    hostname: ${CONTAINER_NAME}-webgateway-apache
     ports:
-    - ${WEBGATEWAY_PORT_HTTP}:80
-    - ${WEBGATEWAY_PORT_HTTPS}:443
+    - ${WEBGATEWAY_APACHE_PORT_HTTP}:80
+    - ${WEBGATEWAY_APACHE_PORT_HTTPS}:443
     environment:
     - ISC_CSP_CONF_FILE=/webgateway/CSP.conf
     - ISC_CSP_INI_FILE=/webgateway/CSP.ini
     volumes:
-      - ./webgateway:/webgateway
-      - ./webgateway/cert:/opt/cert
+      - ./webgateway-apache:/webgateway
+      - ./cert:/opt/cert
+  
+  webgateway-nginx:
+        image: ${WEBGATEWAY_NGINX}
+        init: true
+        container_name: ${CONTAINER_NAME}-webgateway-nginx
+        hostname: ${CONTAINER_NAME}-webgateway-nginx
+        ports:
+            - ${WEBGATEWAY_NGINX_PORT_HTTP}:80
+            - ${WEBGATEWAY_NGINX_PORT_HTTPS}:443
+        environment:
+            - ISC_CSP_CONF_FILE=/webgateway/CSP.conf
+            - ISC_CSP_INI_FILE=/webgateway/CSP.ini
+        volumes:
+        - ./webgateway-nginx:/webgateway
+        - ./cert:/opt/cert
 
   postgres:
-    container_name: ${CONTAINERNAME_PREFIX}-postgres
+    container_name: ${CONTAINER_NAME}-postgres
     image: postgres
     environment:
       POSTGRES_PASSWORD: postgres
@@ -62,7 +77,7 @@ services:
 
   prometheus:
     image: prom/prometheus:latest
-    container_name: ${CONTAINERNAME_PREFIX}-prometheus
+    container_name: ${CONTAINER_NAME}-prometheus
     restart: unless-stopped
     ports:
       - ${PROMETHEUS_PORT}:9090
@@ -73,7 +88,7 @@ services:
 
   grafana:
     image: grafana/grafana:latest
-    container_name:  ${CONTAINERNAME_PREFIX}-grafana
+    container_name:  ${CONTAINER_NAME}-grafana
     restart: unless-stopped
     ports:
       - ${GRAFANA_PORT}:3000
@@ -109,14 +124,14 @@ services:
 
   loki:
     image: grafana/loki:latest
-    container_name:  ${CONTAINERNAME_PREFIX}-loki
+    container_name:  ${CONTAINER_NAME}-loki
     ports:
       - ${LOKI_PORT}:3100
     command: -config.file=/etc/loki/local-config.yaml
 
   promtail:
     image: grafana/promtail:latest
-    container_name: ${CONTAINERNAME_PREFIX}-promtail
+    container_name: ${CONTAINER_NAME}-promtail
     volumes:
       - ./dur/IRIS/mgr:/var/log
     command: -config.file=/etc/promtail/config.yml
