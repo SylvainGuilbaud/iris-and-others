@@ -6,8 +6,8 @@ services:
         - IMAGE=${IMAGE_IRIS_EM}
       dockerfile: Dockerfile
     restart: always
-    container_name: ${CONTAINER_NAME}-iris
-    hostname: ${CONTAINER_NAME}-iris
+    container_name: ${CONTAINER_NAME}
+    hostname: ${CONTAINER_NAME}
     environment:
       - ISC_CPF_MERGE_FILE=/code/merge/merge.cpf
       - ISC_DATA_DIRECTORY=/volumes/IRIS
@@ -24,20 +24,20 @@ services:
       # - /etc/timezone:/etc/timezone:ro
       # - /etc/localtime:/etc/localtime:ro
     # command: --key /irisdev/app/key/iris.key -a /irisdev/app/configure.sh
-    command: --key /keys/iris.key 
+    command: --key /key/iris.key 
 
 
-  webgateway:
+  webgateway-apache:
     image: ${WEBGATEWAY_APACHE}
     init: true
     container_name: ${CONTAINER_NAME}-webgateway-apache
     hostname: ${CONTAINER_NAME}-webgateway-apache
     ports:
-    - ${WEBGATEWAY_APACHE_PORT_HTTP}:80
-    - ${WEBGATEWAY_APACHE_PORT_HTTPS}:443
+      - ${WEBGATEWAY_APACHE_PORT_HTTP}:80
+      - ${WEBGATEWAY_APACHE_PORT_HTTPS}:443
     environment:
-    - ISC_CSP_CONF_FILE=/webgateway/CSP.conf
-    - ISC_CSP_INI_FILE=/webgateway/CSP.ini
+      - ISC_CSP_CONF_FILE=/webgateway/CSP.conf
+      - ISC_CSP_INI_FILE=/webgateway/CSP.ini
     volumes:
       - ./webgateway-apache:/webgateway
       - ./cert:/opt/cert
@@ -56,6 +56,7 @@ services:
         volumes:
         - ./webgateway-nginx:/webgateway
         - ./cert:/opt/cert
+        - ./webgateway-nginx/conf:/opt/webgateway/nginx
 
   postgres:
     container_name: ${CONTAINER_NAME}-postgres

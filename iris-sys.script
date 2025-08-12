@@ -13,7 +13,7 @@
     zpm "install pex-embbeded-python"
 
     zn "%SYS"
-    #; do ##class(%SYSTEM.CSP).SetConfig("CSPConfigName","IRISAPP")
+    do ##class(%SYSTEM.CSP).SetConfig("CSPConfigName","iris-and-others")
 
     do ##class(Security.Users).UnExpireUserPasswords("*")
     do ##class(%SQL.Statement).%ExecDirect(,"update security.events set enabled=1")
