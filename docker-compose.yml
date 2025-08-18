@@ -9,23 +9,19 @@ services:
     container_name: ${CONTAINER_NAME}
     hostname: ${CONTAINER_NAME}
     environment:
-      - ISC_CPF_MERGE_FILE=/code/merge/merge.cpf
-      - ISC_DATA_DIRECTORY=/volumes/IRIS
       - TZ=Europe/Paris
+      - ISC_DATA_DIRECTORY=$ISC_DATA_DIRECTORY
+      - ISC_CPF_MERGE_FILE=$ISC_CPF_MERGE_FILE
     ports: 
       - ${IRIS_SUPERSERVER_PORT}:1972
     volumes:
+      - ./volumes:$ISC_DATA_DIRECTORY
       - .:/irisdev/app
-      - ./volumes:/volumes
       - ./data:/data
       - ./code:/code
       - ./keys:/key
       - ./jdbc:/jdbc
-      # - /etc/timezone:/etc/timezone:ro
-      # - /etc/localtime:/etc/localtime:ro
-    # command: --key /irisdev/app/key/iris.key -a /irisdev/app/configure.sh
     command: --key /key/iris.key 
-
 
   webgateway-apache:
     image: ${WEBGATEWAY_APACHE}

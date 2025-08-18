@@ -2,7 +2,7 @@
     "objectscript.conn": {
       "https": false,
       "ns": "IRISAPP",
-      "active": true,
+      "active": false,
       "server": "iris-and-others",
       "docker-compose": {
         "service": "iris",

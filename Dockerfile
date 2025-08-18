@@ -12,7 +12,6 @@ RUN apt-get update && apt-get install -y \
 	sudo -u ${ISC_PACKAGE_MGRUSER} sudo echo enabled passwordless sudo-ing for ${ISC_PACKAGE_MGRUSER} && \
     chmod -R +rx /opt/cert
 
-
 USER ${ISC_PACKAGE_MGRUSER}
 WORKDIR /home/irisowner/dev
 
