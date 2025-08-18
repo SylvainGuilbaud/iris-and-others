@@ -15,7 +15,7 @@ services:
     ports: 
       - ${IRIS_SUPERSERVER_PORT}:1972
     volumes:
-      - ./persistent:$ISC_DATA_DIRECTORY
+      - ./volumes/IRIS:$ISC_DATA_DIRECTORY
       - .:/irisdev/app
       - ./data:/data
       - ./code:/code
