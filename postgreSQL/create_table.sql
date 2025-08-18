@@ -51,3 +51,11 @@ INSERT INTO app.personne (id, LastName, FirstName, DOB, Sex)
                   VALUES (7, 'Twain', 'Mark', '1835-11-30', 'M');
 INSERT INTO app.personne (id, LastName, FirstName, DOB, Sex) 
                   VALUES (8, 'Joyce', 'James', '1882-02-02', 'M');
+INSERT INTO app.personne (id, LastName, FirstName, DOB, Sex) 
+                  VALUES (9, 'Kafka', 'Franz', '1883-07-03', 'M');
+INSERT INTO app.personne (id, LastName, FirstName, DOB, Sex) 
+                  VALUES (10, 'Woolf', 'Virginia', '1882-01-25', 'F');
+INSERT INTO app.personne (id, LastName, FirstName, DOB, Sex) 
+                  VALUES (11, 'Hugo', 'Victor', '1802-02-26', 'M');
+INSERT INTO app.personne (id, LastName, FirstName, DOB, Sex) 
+                  VALUES (12, 'Proust', 'Marcel', '1871-07-10', 'M');
