@@ -14,7 +14,7 @@
         "Management Portal IRIS NGINX": "http://${host}:1081/csp/sys/%25CSP.Portal.Home.zen",
         "API Management": "http://${host}:1080/api/mgmnt/v2/UCT/UCT.REST",
         "Monitor - Grafana": "http://${host}:13000",
-        "Monitor - Prometheus": "http://${host}:19090",
+        "Monitor - Prometheus": "http://${host}:13090",
         "UCT": "http://localhost:4200",
         "ClassExplorer": "http://localhost:${port}/classexplorer/#{%22name%22:%22UCT.Data.Factory,UCT.Data.Issue%22,%22type%22:%22arbitrary%22,%22namespace%22:%22UCT%22}",
         "WebTerminal": "http://localhost:${port}/terminal/",
