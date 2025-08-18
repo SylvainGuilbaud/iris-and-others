@@ -1,3 +1,4 @@
+-- Insertion des commandes
 DECLARE
     v_product_pk NUMBER;
 BEGIN
@@ -15,6 +16,19 @@ BEGIN
             TO_DATE('2020-01-01', 'YYYY-MM-DD') + i - 1 -- Incremental dates starting from 2020-01-01
         );
     END LOOP;
+END;
+/
+
+-- Activer l'affichage des résultats dans le log Oracle
+SET SERVEROUTPUT ON;
+-- Afficher le nombre de commandes insérées
+DECLARE
+    v_order_count NUMBER;
+BEGIN
+    SELECT COUNT(*) INTO v_order_count
+    FROM C##supply.orders;
+
+    DBMS_OUTPUT.PUT_LINE('Nombre de commandes : ' || v_order_count);
 END;
 /
 
