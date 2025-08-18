@@ -81,7 +81,7 @@
     set oracle.Name = "oracle"
     set oracle.URL = "jdbc:oracle:thin:@oracle-db:1521:free"
     set oracle.classpath = "/jdbc/ojdbc11.jar"
-    set oracle.driver = "oracle.jdbc.OracleDriver"
+    set oracle.driver = "oracle.jdbc.driver.OracleDriver"
     set oracle.Usr = "C##supply"
     set oracle.pwd = "supply_pwd"
     set oracle.isJDBC = 1
