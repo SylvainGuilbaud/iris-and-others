@@ -6,8 +6,9 @@ This repository contains various configurations and scripts for setting up IRIS 
 ## IRIS
 This service is built using the IRIS Community Edition Docker image. It is configured to run with a specific set of environment variables and volumes for data persistence.
 
--[IRIS Community Edition Documentation](https://docs.intersystems.com/irislatest/csp/docbook/DocBook.UI.Page.cls?KEY=GIRIS)
--[IRIS Management Portal](http://localhost:1081/csp/sys/UtilHome.csp))
+[IRIS Community Edition Documentation](https://docs.intersystems.com/irislatest/csp/docbook/DocBook.UI.Page.cls?KEY=GIRIS)
+
+[IRIS Management Portal](http://localhost:1081/csp/sys/UtilHome.csp)
 
 ## Oracle
 This service is built using the Oracle Database Docker image. It is configured to run with a specific set of environment variables and volumes for data persistence.
