@@ -3,7 +3,9 @@ services:
     build: 
       context: .
       args:
-        - IMAGE=${IMAGE_IRIS_EM_COMMUNITY}
+        # - IMAGE=${IMAGE_IRIS_EM_COMMUNITY}
+        # - IMAGE=${IMAGE_IRIS_CD_COMMUNITY}
+        - IMAGE=${IMAGE_IRIS_PREVIEW_COMMUNITY}
       dockerfile: Dockerfile
     restart: always
     container_name: ${CONTAINER_NAME}
