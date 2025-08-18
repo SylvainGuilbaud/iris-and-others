@@ -3,7 +3,7 @@ services:
     build: 
       context: .
       args:
-        - IMAGE=${IMAGE_IRIS_EM}
+        - IMAGE=${IMAGE_IRIS_EM_COMMUNITY}
       dockerfile: Dockerfile
     restart: always
     container_name: ${CONTAINER_NAME}
@@ -121,7 +121,7 @@ services:
 
   loki:
     image: grafana/loki:latest
-    container_name:  ${CONTAINER_NAME}-loki
+    container_name: ${CONTAINER_NAME}-loki
     ports:
       - ${LOKI_PORT}:3100
     command: -config.file=/etc/loki/local-config.yaml
