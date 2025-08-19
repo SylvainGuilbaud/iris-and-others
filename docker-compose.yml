@@ -1,6 +1,6 @@
 services:
   iris:
-    user: "${ISC_PACKAGE_IRISUSER}:${ISC_PACKAGE_IRISGROUP}"
+    user: 1000:1000
     build: 
       context: .
       args:
