@@ -1,4 +1,4 @@
-Class adm.utils Extends %RegisteredObject
+Class common.adm.utils Extends %RegisteredObject
 {
 
 ClassMethod logObjectScript(msg As %String, severity As %Integer = 0) As %Status

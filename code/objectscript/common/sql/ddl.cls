@@ -1,4 +1,4 @@
-Class sql.ddl Extends %RegisteredObject
+Class common.sql.ddl 
 {
 
 /// Import DDL
