@@ -1,4 +1,4 @@
-ARG IMAGE
+ARG IMAGE=containers.intersystems.com/intersystems/iris-community:latest-em
 FROM $IMAGE
 
 USER root
@@ -12,12 +12,12 @@ RUN apt-get update && apt-get install -y \
 	sudo -u ${ISC_PACKAGE_MGRUSER} sudo echo enabled passwordless sudo-ing for ${ISC_PACKAGE_MGRUSER} && \
     chmod -R +rx /opt/cert
 
-RUN mkdir -p /volumes/IRIS && chown -R ${ISC_PACKAGE_MGRUSER}:${ISC_PACKAGE_MGRUSER} /volumes/IRIS
+ENV EXTERNAL_DATA_DIRECTORY=/volumes/IRIS
+RUN mkdir -p $EXTERNAL_DATA_DIRECTORY && chown -R ${ISC_PACKAGE_MGRUSER}:${ISC_PACKAGE_MGRUSER} $EXTERNAL_DATA_DIRECTORY
 
+ENV ISC_PACKAGE_MGRUSER=irisowner
 USER ${ISC_PACKAGE_MGRUSER}
 WORKDIR /home/irisowner/dev
-
-ARG TARGETARCH ${TARGETARCH}
 
 ENV PYTHON_PATH=/usr/irissys/bin/irispython
 ENV SRC_PATH=/opt/irisapp
