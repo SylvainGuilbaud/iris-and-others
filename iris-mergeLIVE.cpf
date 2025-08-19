@@ -12,14 +12,14 @@ CreateMapPackage:Namespace=%ALL,Name=common,Database=USER
 CreateMapRoutine:Namespace=%ALL,Name=common,Database=USER
 
 CreateResource:Name=%DB_IRISAPP_DATA,Description="IRISAPP_DATA database"
-CreateDatabase:Name=IRISAPP_DATA,Directory=/persistent/IRIS/mgr/IRISAPP_DATA,Resource=%DB_IRISAPP_DATA
+CreateDatabase:Name=IRISAPP_DATA,Directory=/volumes/IRIS/mgr/IRISAPP_DATA,Resource=%DB_IRISAPP_DATA
 CreateResource:Name=%DB_IRISAPP_CODE,Description="IRISAPP_CODE database"
-CreateDatabase:Name=IRISAPP_CODE,Directory=/persistent/IRIS/mgr/IRISAPP_CODE,Resource=%DB_IRISAPP_CODE
+CreateDatabase:Name=IRISAPP_CODE,Directory=/volumes/IRIS/mgr/IRISAPP_CODE,Resource=%DB_IRISAPP_CODE
 CreateNamespace:Name=IRISAPP,Globals=IRISAPP_DATA,Routines=IRISAPP_CODE,Interop=1
 
 
 CreateResource:Name=%DB_COMMON_CODE,Description="COMMON_CODE database"
-CreateDatabase:Name=COMMON_CODE,Directory=/persistent/IRIS/mgr/COMMON_CODE,Resource=%DB_COMMON_CODE
+CreateDatabase:Name=COMMON_CODE,Directory=/volumes/IRIS/mgr/COMMON_CODE,Resource=%DB_COMMON_CODE
 
 
 ModifyService:Name=%Service_CallIn,Enabled=1,AutheEnabled=48
