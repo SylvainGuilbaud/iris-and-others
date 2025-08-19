@@ -8,9 +8,9 @@ This service is built using the IRIS Community Edition Docker image. It is confi
 
 [IRIS Community Edition Documentation](https://docs.intersystems.com/irislatest/csp/docbook/DocBook.UI.Page.cls?KEY=GIRIS)
 
-[IRIS Management Portal](http://localhost:1081/csp/sys/UtilHome.csp)
+[IRIS Management Portal](http://localhost:1080/csp/sys/UtilHome.csp)
 
-[IRIS SQL Gateway Connections](http://localhost:1081/csp/sys/mgr/UtilSqlGateways.csp)
+[IRIS SQL Gateway Connections](http://localhost:1080/csp/sys/mgr/UtilSqlGateways.csp)
 
 ## Oracle
 This service is built using the Oracle Database Docker image. It is configured to run with a specific set of environment variables and volumes for data persistence.

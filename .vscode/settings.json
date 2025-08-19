@@ -9,9 +9,7 @@
         "internalPort": 1080
       },
       "links": {
-        "Management Portal IRIS AUX": "http://${host}:1080/csp/sys/%25CSP.Portal.Home.zen",
-        "Management Portal IRIS NGINX AUX": "http://${host}:1081/csp/sys/%25CSP.Portal.Home.zen",
-        "Management Portal IRIS NGINX": "http://${host}:1081/csp/sys/%25CSP.Portal.Home.zen",
+        "Management Portal IRIS": "http://${host}:1080/csp/sys/%25CSP.Portal.Home.zen",
         "API Management": "http://${host}:1080/api/mgmnt/v2/UCT/UCT.REST",
         "Monitor - Grafana": "http://${host}:13000",
         "Monitor - Prometheus": "http://${host}:13090",
