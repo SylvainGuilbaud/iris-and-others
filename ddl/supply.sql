@@ -1,7 +1,7 @@
 -- Import into IRIS via %SYSTEM.SQL.Schema:ImportDDL
 -- https://docs.intersystems.com/irislatest/csp/documatic/%25CSP.Documatic.cls?LIBRARY=%25SYS&CLASSNAME=%25SYSTEM.SQL.Schema#ImportDDL
 -- ex: 
--- do $system.SQL.Schema.ImportDDL("/home/irisowner/dev/src/sql/oracle-migration/supply.sql","","Oracle")
+-- do $system.SQL.Schema.ImportDDL("/irisdev/app/ddl/supply.sql","","Oracle")
 
 
 -- "SUPPLY".PRODUCTS definition

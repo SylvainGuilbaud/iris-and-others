@@ -5,3 +5,4 @@ jsonpath-ng>=1.5.2
 sqlalchemy-iris
 pytest
 flask
+intersystems-irispython
