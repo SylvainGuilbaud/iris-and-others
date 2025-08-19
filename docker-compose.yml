@@ -1,6 +1,6 @@
 services:
   iris:
-    user: "${UID}:${GID}"
+    user: "${ISC_PACKAGE_IRISUSER}:${ISC_PACKAGE_IRISGROUP}"
     build: 
       context: .
       args:
