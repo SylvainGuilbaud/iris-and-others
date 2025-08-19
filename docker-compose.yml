@@ -23,7 +23,7 @@ services:
       - ./code:/code
       - ./keys:/key
       - ./jdbc:/jdbc
-    command: --key /key/iris.key 
+    # command: --key /key/iris.key 
 
   webgateway-apache:
     image: ${WEBGATEWAY_APACHE}
