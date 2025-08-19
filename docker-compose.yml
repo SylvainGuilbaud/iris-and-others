@@ -1,6 +1,6 @@
 services:
   iris:
-    user: 1000:1000
+    # user: ${UID}:${GID}
     build: 
       context: .
       args:
@@ -13,12 +13,12 @@ services:
     hostname: ${CONTAINER_NAME}
     environment:
       - TZ=Europe/Paris
-      # - ISC_DATA_DIRECTORY=$ISC_DATA_DIRECTORY
+      - ISC_DATA_DIRECTORY=$ISC_DATA_DIRECTORY
       - ISC_CPF_MERGE_FILE=$ISC_CPF_MERGE_FILE
     ports: 
       - ${IRIS_SUPERSERVER_PORT}:1972
     volumes:
-      - ./persistent:$ISC_DATA_DIRECTORY
+      - ./volumes/IRIS:$ISC_DATA_DIRECTORY
       - .:/irisdev/app
       - ./data:/data
       - ./code:/code
