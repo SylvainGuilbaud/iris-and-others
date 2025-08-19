@@ -12,7 +12,7 @@ services:
     hostname: ${CONTAINER_NAME}
     environment:
       - TZ=Europe/Paris
-      - ISC_DATA_DIRECTORY=$ISC_DATA_DIRECTORY
+      # - ISC_DATA_DIRECTORY=$ISC_DATA_DIRECTORY
       - ISC_CPF_MERGE_FILE=$ISC_CPF_MERGE_FILE
     ports: 
       - ${IRIS_SUPERSERVER_PORT}:1972
