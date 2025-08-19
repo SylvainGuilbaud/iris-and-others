@@ -11,3 +11,4 @@ jrnbufs=1024
 ModifyService:Name=%Service_CallIn,Enabled=1,AutheEnabled=48
 
 Execute:Namespace="IRISAPP",ClassName="%SYSTEM.OBJ",MethodName="Import",Arg1="/code/objectscript",Arg2="ck"
+Execute:Namespace="IRISAPP",ClassName="%SYSTEM.SQL.Schema",MethodName="ImportDDL",Arg1="/code/ddl/supply.sql",Arg2="",Arg3="Oracle"
