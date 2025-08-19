@@ -12,6 +12,8 @@ RUN apt-get update && apt-get install -y \
 	sudo -u ${ISC_PACKAGE_MGRUSER} sudo echo enabled passwordless sudo-ing for ${ISC_PACKAGE_MGRUSER} && \
     chmod -R +rx /opt/cert
 
+RUN mkdir -p /volumes/IRIS && chown -R ${ISC_PACKAGE_MGRUSER}:${ISC_PACKAGE_MGRUSER} /volumes/IRIS
+
 USER ${ISC_PACKAGE_MGRUSER}
 WORKDIR /home/irisowner/dev
 
